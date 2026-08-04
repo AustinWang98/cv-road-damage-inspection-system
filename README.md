@@ -15,6 +15,28 @@ The notebook starts with a manual table of contents, a final-project rubric matr
 
 The master notebook embeds the verified full-run outputs directly inside **Part A, Section 6: Exploratory data analysis**. The nine figures are separated into nine presentation-friendly sequences of code, figure, and figure-specific interpretation. Re-running Part A regenerates the same figure files from the full dataset.
 
+The complete original [project proposal](docs/Project_Proposal.docx) and the one-page [course project requirements](docs/Course_Project_Requirements.pdf) are included under `docs/`.
+
+## Repository layout
+
+```text
+.
+├── README.md
+├── Road_Damage_Final_Project_Master.ipynb
+├── docs/
+│   ├── Project_Proposal.docx
+│   ├── Course_Project_Requirements.pdf
+│   ├── Member1_EDA_Report.md
+│   ├── Notebook_Structure_and_Rubric_Audit.md
+│   └── Member1_Run_Guide_CN.md
+└── artifacts/
+    └── member1/
+        ├── EDA_Figures/
+        └── Member1_RDD2022_Full_EDA_Results.zip
+```
+
+The root stays limited to the README and the master notebook. Human-readable documentation belongs in `docs/`; generated Member 1 evidence belongs in `artifacts/member1/`.
+
 ## Current status
 
 | Section | Owner | Status | Recommended runtime |
@@ -30,7 +52,7 @@ The master notebook embeds the verified full-run outputs directly inside **Part 
 | Severity score and Gradio/Streamlit app | Member 3 | TODO scaffold | GPU training; CPU/GPU inference |
 | Abstract, operations, maintenance, conclusion, references | All members | TODO scaffold | CPU |
 
-The verified full Member 1 run produced **38,385 prepared labeled images**, **55,006 valid target boxes**, and a group-aware **26,888 / 5,714 / 5,783** train/validation/test split. It also scanned all **9,035** unlabeled official-test images at image level. See `Member1_RDD2022_Full_EDA_Report.md` for the readable summary and `Member1_RDD2022_Full_EDA_Results.zip` for the CSV audit tables and nine figures.
+The verified full Member 1 run produced **38,385 prepared labeled images**, **55,006 valid target boxes**, and a group-aware **26,888 / 5,714 / 5,783** train/validation/test split. It also scanned all **9,035** unlabeled official-test images at image level. See [the Member 1 EDA report](docs/Member1_EDA_Report.md) for the readable summary and [the results archive](artifacts/member1/Member1_RDD2022_Full_EDA_Results.zip) for the CSV audit tables and nine figures.
 
 ## Member 1 responsibility checklist
 
@@ -122,13 +144,13 @@ Do not use one uninterrupted Run All for the entire finished project: Part A is 
 
 ## Other documentation
 
-`项目评估与Member1运行说明.md` contains the detailed Chinese proposal review, disk/runtime guidance, Colab steps, and handoff paths.
+[Member1_Run_Guide_CN.md](docs/Member1_Run_Guide_CN.md) contains the detailed Chinese proposal review, disk/runtime guidance, Colab steps, and handoff paths.
 
-`Notebook_Structure_and_Rubric_Audit.md` records the whole-notebook requirement mapping, design checks, execution checks, verification performed, and remaining completion work.
+[Notebook_Structure_and_Rubric_Audit.md](docs/Notebook_Structure_and_Rubric_Audit.md) records the whole-notebook requirement mapping, design checks, execution checks, verification performed, and remaining completion work.
 
-`Member1_RDD2022_Full_EDA_Report.md` records the verified full-run statistics. `Member1_RDD2022_Full_EDA_Results.zip` contains the complete small outputs (reports, manifests, audit CSVs, configuration, citation file, and figures) without duplicating the multi-gigabyte image dataset.
+[Member1_EDA_Report.md](docs/Member1_EDA_Report.md) records the verified full-run statistics. [Member1_RDD2022_Full_EDA_Results.zip](artifacts/member1/Member1_RDD2022_Full_EDA_Results.zip) contains the complete small outputs (reports, manifests, audit CSVs, configuration, citation file, and figures) without duplicating the multi-gigabyte image dataset.
 
-For direct local viewing without unzipping, the nine PNGs are also available in `Member1_EDA_Figures/`.
+For direct viewing without unzipping, the nine PNGs are also available in [`artifacts/member1/EDA_Figures/`](artifacts/member1/EDA_Figures/).
 
 ## Sources
 

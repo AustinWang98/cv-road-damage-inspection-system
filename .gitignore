@@ -1,0 +1,31 @@
+# macOS and notebook metadata
+.DS_Store
+.ipynb_checkpoints/
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Raw and prepared datasets (never commit multi-GB image data)
+data/
+datasets/
+raw/
+member1_rdd2022_work/
+RDD2022*.zip
+rdd2022_yolo_coco_full_labeled.zip
+
+# Training outputs and model weights
+runs/
+wandb/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Local secrets
+.env
+.env.*
+*.pem

@@ -45,6 +45,10 @@
 
 完整运行还生成了九张 EDA 图、逐图 manifest、逐框 audit、schema/missingness、重复与近重复报告以及 cross-country COCO 标注。结果包只收录这些小型报告与图表，不再复制多 GB 图片。
 
+主 notebook 已将上述全量运行的真实统计和九张 EDA 图放回 Part A 的 `6. Exploratory data analysis` 正常流程中。现在每一张图都有独立的“代码 → 图 → 该图解释”，方便答辩时逐图阅读；非核心检查只保留一句简短说明。直接打开 notebook 即可查看，不需要先重新运行；单独的 PNG 文件也保存在 `Member1_EDA_Figures/`。
+
+协作阶段应保留 Part B-D 的脚手架和 TODO，方便后续成员接手。最后一位成员完成后，必须做一次提交清理：删除已解决的 TODO、占位符、临时状态、交接/操作指南和仅用于调试的单元，只保留项目方法、可复现代码、最终输出、关键解释、引用以及必要的运行要求。
+
 ## 与评分要求的对应关系
 
 | 评分项 | Proposal 覆盖情况 | 需要落实的证据 |
@@ -79,7 +83,7 @@
 
 - 官方 ZIP：约 13.26 GB（页面显示约 12.36 GB）。
 - 全量解压、硬链接数据集、临时压缩包和 EDA 输出同时存在时，建议准备 45-60 GB 空闲空间。
-- 你约 100 GB 的本机剩余空间够用。
+- 本次全量运行后，本机可用空间已经明显下降；不要在本机再次下载或生成第二套完整数据。需要复现时优先使用具有足够临时磁盘的 Colab/云端环境。
 - 本次全量运行已经下载并保留官方 ZIP 和准备后的数据，因此不要再重复下载一份；正式清理前先确认 Member 2 已拿到所需的 prepared archive 或共享目录。
 - notebook 默认在同一个本地/Colab 文件系统中使用硬链接，避免为了 YOLO/COCO 导出再复制一遍图片。
 - 如果在 Colab 运行并保存完整训练集 ZIP，Google Drive 还需留出约 13-20 GB。
@@ -98,9 +102,9 @@
 
 1. 打开 Google Colab，上传 `Road_Damage_Final_Project_Master.ipynb`。Part A 是本次已经完成的 Member 1 流水线；Part B-D 是为 Member 2、Member 3 和共享报告保留的后续章节，不要删除。
 2. 在 `Runtime -> Change runtime type` 中选择 CPU；如果能选 High-RAM，优先选择 High-RAM。不要为 EDA 占用 GPU。
-3. 依次执行所有 cell。第一次会要求挂载 Google Drive。
+3. 只执行 Part A（从 dependency/configuration 到 `10. Handoff to Members 2 and 3`），不要在 CPU runtime 继续运行 Part B-D。第一次会要求挂载 Google Drive。
 4. notebook 自动从官方 Figshare 下载 RDD2022，不需要 Kaggle token。
-5. 等待完整下载、解压、47,420 张图像扫描、EDA、YOLO/COCO 转换和压缩完成。
+5. 等待完整下载、解压、47,420 张图像扫描、EDA、YOLO/COCO 转换和压缩完成；首次全量运行可能需要数小时，取决于下载和 Drive 速度。
 6. 结果默认保存到：
 
    `MyDrive/RDD2022_Project/member1_outputs/`
@@ -147,10 +151,21 @@ RT-DETR-R18 使用同一图片目录以及：
 
 跨国家实验使用 `instances_cross_country_train.json`、`instances_cross_country_val.json` 和 `instances_cross_country_test.json`；United States 是完全 held-out test country，其余国家进入 train/validation。
 
+YOLO 的跨国家实验直接使用：
+
+```python
+cross_country_yaml = '/content/rdd2022_yolo_coco_full_labeled/dataset_cross_country.yaml'
+```
+
+其中 `cross_country_train.txt`、`cross_country_val.txt` 和 `cross_country_test.txt` 指向与主实验相同的物理图片和 YOLO 标签，不会生成第二套随机数据。
+
 ## 正式引用
 
 - RDD2022 官方数据集：<https://doi.org/10.6084/m9.figshare.21431547>
 - RDD2022 数据论文：<https://doi.org/10.1002/gdj3.260>
 - RDD2022 arXiv：<https://arxiv.org/abs/2209.08538>
 - RT-DETR 官方实现：<https://github.com/lyuwenyu/RT-DETR>
+- Ultralytics YOLO11 文档：<https://docs.ultralytics.com/models/yolo11>
 - Ultralytics RT-DETR 文档：<https://docs.ultralytics.com/models/rtdetr/>
+- Torchvision DeepLabV3 文档：<https://docs.pytorch.org/vision/stable/models/deeplabv3.html>
+- Hugging Face SegFormer 文档：<https://huggingface.co/docs/transformers/model_doc/segformer>

@@ -44,6 +44,7 @@ The root stays limited to the README and the master notebook. Human-readable doc
 | RDD2022 full inventory, XML parsing, data quality, EDA | Member 1 | Implemented and smoke-tested | CPU / High-RAM |
 | YOLO + COCO conversion and shared splits | Member 1 | Implemented and smoke-tested | CPU / High-RAM |
 | Local full-data execution | Member 1 | Run by Codex; see delivered full EDA report/results | Local CPU |
+| Google Drive data handoff | Member 1 | Local ZIP + SHA-256 ready; shared-Drive upload and Member 2 validation pending | Google Drive + Colab |
 | YOLO11n | Member 2 | TODO scaffold | Colab GPU |
 | RT-DETR-R18 | Member 2 | TODO scaffold | Colab GPU |
 | Detection comparison/ablations/error analysis | Member 2 | TODO scaffold | Colab GPU |
@@ -115,6 +116,45 @@ rdd2022_yolo_coco_full_labeled/
 YOLO class IDs are 0-3. COCO category IDs are 1-4. The images are shared; do not make a separate random RT-DETR dataset.
 
 For the cross-country experiment, YOLO uses `dataset_cross_country.yaml`; RT-DETR uses the three `instances_cross_country_*.json` files. Both point to the same held-out-US assignment.
+
+## Google Drive data handoff action
+
+The multi-gigabyte RDD2022 images are intentionally not committed to GitHub. Member 1 generated the complete training handoff archive locally on **2026-08-06**:
+
+```text
+rdd2022_yolo_coco_full_labeled.zip
+size: 9.9 GiB (Finder display)
+SHA-256: 2fc618a2dea071b83cf59aa585840bd421197298a7208111c20b8c6a7d403961
+```
+
+Team action status:
+
+- [x] Generate the full prepared-data ZIP from all 38,385 labeled images.
+- [x] Generate and record the SHA-256 checksum.
+- [ ] Upload the ZIP and `.sha256` file to the team-shared Google Drive folder.
+- [ ] Share the folder with Members 2 and 3 and have each member add a shortcut under `My Drive`.
+- [ ] Run the Part B/B1 validator in Member 2's Colab session and confirm `Member 2 data contract validated.`
+
+Use this shared-Drive layout:
+
+```text
+RDD2022_Project/
+├── member1_outputs/
+│   ├── rdd2022_yolo_coco_full_labeled.zip
+│   └── rdd2022_yolo_coco_full_labeled.zip.sha256
+├── member2_configs/
+├── member2_runs/
+├── pothole_mix/
+└── member3_runs/
+```
+
+After adding the shared folder as a `My Drive` shortcut, the expected Colab archive path is:
+
+```text
+/content/drive/MyDrive/RDD2022_Project/member1_outputs/rdd2022_yolo_coco_full_labeled.zip
+```
+
+Do not resize or recompress the images before handoff. Both detectors must load the original-resolution images and apply their configured training transforms dynamically. Do not upload the official raw ZIP or the extracted raw tree; the prepared archive is the only RDD2022 image package Members 2 and 3 need from Member 1.
 
 ## Recommended run order
 

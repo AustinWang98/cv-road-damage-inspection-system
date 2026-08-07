@@ -44,7 +44,7 @@ The root stays limited to the README and the master notebook. Human-readable doc
 | RDD2022 full inventory, XML parsing, data quality, EDA | Member 1 | Implemented and smoke-tested | CPU / High-RAM |
 | YOLO + COCO conversion and shared splits | Member 1 | Implemented and smoke-tested | CPU / High-RAM |
 | Local full-data execution | Member 1 | Run by Codex; see delivered full EDA report/results | Local CPU |
-| Google Drive data handoff | Member 1 | Local ZIP + SHA-256 ready; shared-Drive upload and Member 2 validation pending | Google Drive + Colab |
+| Google Drive data handoff | Member 1 | ZIP + SHA-256 uploaded and shared; teammate shortcut and Member 2 validation pending | Google Drive + Colab |
 | YOLO11n | Member 2 | TODO scaffold | Colab GPU |
 | RT-DETR-R18 | Member 2 | TODO scaffold | Colab GPU |
 | Detection comparison/ablations/error analysis | Member 2 | TODO scaffold | Colab GPU |
@@ -131,8 +131,9 @@ Team action status:
 
 - [x] Generate the full prepared-data ZIP from all 38,385 labeled images.
 - [x] Generate and record the SHA-256 checksum.
-- [ ] Upload the ZIP and `.sha256` file to the team-shared Google Drive folder.
-- [ ] Share the folder with Members 2 and 3 and have each member add a shortcut under `My Drive`.
+- [x] Upload the ZIP and `.sha256` file to `My Drive/RDD2022_Project/member1_outputs/`.
+- [x] Share the uploaded data with Members 2 and 3.
+- [ ] Each teammate adds `RDD2022_Project` as a shortcut under their own `My Drive`.
 - [ ] Run the Part B/B1 validator in Member 2's Colab session and confirm `Member 2 data contract validated.`
 
 Use this shared-Drive layout:

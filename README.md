@@ -5,15 +5,15 @@
 Use `Road_Damage_Final_Project_Master.ipynb` as the single project notebook. It is intentionally structured as a complete final-project notebook:
 
 - Part A - Member 1: full RDD2022 data engineering and detection EDA.
-- Part B - Member 2: YOLO11n, RT-DETR-R18, evaluation, resolution experiment, held-out-country experiment, and error analysis.
+- Part B - Member 2: YOLO11n vs YOLO11s, champion-challenger evaluation, held-out-country experiment, and error analysis.
 - Part C - Member 3: full Pothole Mix data/EDA, DeepLabV3-MobileNetV3, SegFormer-B0, severity scoring, and application.
 - Part D - Shared: abstract, consolidated results, deployment, maintenance, limitations, conclusion, references, and presentation evidence.
 
-The Part B-D cells are scaffolds, not fake results. Keep them while the project is in progress and replace each TODO with verified code, tables, and interpretation. After the last member finishes, perform a submission cleanup: remove resolved TODOs, placeholders, temporary status labels, handoff/run guides, and debugging-only cells, leaving only project-relevant methods, reproducible code, final outputs, key interpretations, citations, and concise runtime requirements.
+Parts A and B are executed and carry their verified outputs. The remaining Part C-D cells are scaffolds, not fake results; keep them while the project is in progress and replace each TODO with verified code, tables, and interpretation. After the last member finishes, perform a submission cleanup: remove resolved TODOs, placeholders, temporary status labels, handoff/run guides, and debugging-only cells, leaving only project-relevant methods, reproducible code, final outputs, key interpretations, citations, and concise runtime requirements.
 
-The notebook starts with a manual table of contents, a final-project rubric matrix, and a submission gate. Parts B and C include standalone runtime/data validation cells with extraction/training flags defaulted to `False`; this makes Run All safe while requiring later members to opt in deliberately after checking paths, versions, and GPU availability.
+The notebook starts with a manual table of contents, a final-project rubric matrix, and a submission gate. Part B was executed in Colab GPU sessions and its cells appear in execution order, so it is not part of a single Run All; Part C still ships a standalone runtime/data validator with training flags defaulted to `False`.
 
-The master notebook embeds the verified full-run outputs directly inside **Part A, Section 6: Exploratory data analysis**. The nine figures are separated into nine presentation-friendly sequences of code, figure, and figure-specific interpretation. Re-running Part A regenerates the same figure files from the full dataset.
+The master notebook embeds the verified full-run outputs directly inside **Part A, Section 6: Exploratory data analysis**. The nine figures are separated into nine presentation-friendly sequences of code, figure, and figure-specific interpretation. Re-running Part A regenerates the same figure files from the full dataset. **Part B** follows the same pattern for the detection work: executed code, its real Colab outputs, eight embedded figures, and an interpretation after each result.
 
 The complete original [project proposal](docs/Project_Proposal.docx) and the one-page [course project requirements](docs/Course_Project_Requirements.pdf) are included under `docs/`.
 
@@ -23,6 +23,9 @@ The complete original [project proposal](docs/Project_Proposal.docx) and the one
 .
 ├── README.md
 ├── Road_Damage_Final_Project_Master.ipynb
+├── member2_configs/
+├── member2_runs/
+├── member2_configs-20260809T235937Z-1-001.zip
 ├── docs/
 │   ├── Project_Proposal.docx
 │   ├── Course_Project_Requirements.pdf
@@ -35,7 +38,7 @@ The complete original [project proposal](docs/Project_Proposal.docx) and the one
         └── Member1_RDD2022_Full_EDA_Results.zip
 ```
 
-The root stays limited to the README and the master notebook. Human-readable documentation belongs in `docs/`; generated Member 1 evidence belongs in `artifacts/member1/`.
+The root contains the two primary deliverables plus Member 2's tracked manifests, captured tables/plots, and small reproducibility-config archive. Human-readable documentation belongs in `docs/`; generated Member 1 evidence belongs in `artifacts/member1/`.
 
 ## Current status
 
@@ -44,10 +47,10 @@ The root stays limited to the README and the master notebook. Human-readable doc
 | RDD2022 full inventory, XML parsing, data quality, EDA | Member 1 | Implemented and smoke-tested | CPU / High-RAM |
 | YOLO + COCO conversion and shared splits | Member 1 | Implemented and smoke-tested | CPU / High-RAM |
 | Local full-data execution | Member 1 | Run by Codex; see delivered full EDA report/results | Local CPU |
-| Google Drive data handoff | Member 1 | ZIP + SHA-256 uploaded and shared; teammate shortcut and Member 2 validation pending | Google Drive + Colab |
-| YOLO11n | Member 2 | TODO scaffold | Colab GPU |
-| RT-DETR-R18 | Member 2 | TODO scaffold | Colab GPU |
-| Detection comparison/ablations/error analysis | Member 2 | TODO scaffold | Colab GPU |
+| Google Drive data handoff | Member 1 | ZIP + SHA-256 uploaded, shared, and validated by Member 2 | Google Drive + Colab |
+| YOLO11n | Member 2 | Trained and evaluated (`det-yolo11n-8k-01`) | Colab GPU |
+| YOLO11s | Member 2 | Trained and evaluated (`det-yolo11s-8k-01`) | Colab GPU |
+| Detection comparison, cross-country, error analysis | Member 2 | Implemented with bootstrap CIs and error slices | Colab GPU |
 | Pothole Mix full data and segmentation EDA | Member 3 | TODO scaffold | CPU / High-RAM |
 | DeepLabV3-MobileNetV3 and SegFormer-B0 | Member 3 | TODO scaffold | Colab GPU |
 | Severity score and Gradio/Streamlit app | Member 3 | TODO scaffold | GPU training; CPU/GPU inference |
@@ -65,7 +68,35 @@ The verified full Member 1 run produced **38,385 prepared labeled images**, **55
 | Detect corrupt and duplicate images | 0 corrupt images, 4 exact-duplicate rows, and 3,256 near-duplicate rows documented; duplicate groups stay within one split. |
 | Produce EDA plots | Nine saved plots covering counts, class/country imbalance, box geometry, image properties, bivariate analysis, samples, and outliers. |
 | Document data quality | Full manifest, schema/missingness, parse-error, bbox-quality, duplicate, annotation-code, and split reports plus a Markdown EDA report. |
-| Support the cross-country experiment | Held-out-US COCO JSON for RT-DETR plus `dataset_cross_country.yaml` and image lists for YOLO; 222 possible leakage images are excluded only from this auxiliary experiment. |
+| Support the cross-country experiment | Held-out-US COCO JSON plus `dataset_cross_country.yaml` and image lists; 222 possible leakage images are excluded only from this auxiliary experiment. |
+
+## Member 2 results summary
+
+Two single-stage detectors of different capacity on Part A's shared split, 640 px, batch 16, seed 42, 30 epochs, NVIDIA L4, Ultralytics 8.4.117. Confidence thresholds were selected on validation (`conf*` 0.228 / 0.237) and the 5,783-image test set was evaluated once.
+
+| Test metric | YOLO11n | YOLO11s |
+|---|---:|---:|
+| mAP@0.50 | 0.4336 | **0.4439** |
+| mAP@0.50:0.95 | 0.2033 | **0.2080** |
+| Mean per-class F1 @ conf* | 0.4627 | **0.4783** |
+| Ultralytics D40 (pothole) recall @ conf* | 0.2621 | **0.3024** |
+| Parameters / GFLOPs | **2.58 M / 6.4** | 9.41 M / 21.4 |
+| Batched inference | **1.58 ms** | 3.77 ms |
+| Single-image latency | 16.07 ms | 16.28 ms |
+
+The F1 and D40-recall rows above use Ultralytics' internal assignment. The paired bootstrap below uses the notebook's independent, slightly stricter greedy IoU matcher, so its micro-F1 values differ slightly; both methods use the same validation-selected thresholds and agree on the model ordering.
+
+**Champion: YOLO11s.** A paired bootstrap over 1,000 resamples of the test images gives an overall micro-F1 gain of +0.0194 (95% CI [+0.0112, +0.0268]); the D40 gain is +0.0416 (95% CI [+0.0158, +0.0688]). D10 and D20 differences are not significant.
+
+Other Part B findings:
+
+- **Cross-country (strict, leakage-filtered 3,084-image slices):** removing US images from training costs -0.0858 mAP@0.50 on US images (0.5064 -> 0.4206, -17% relative), worst on D10 (-28%) and D40 (-21%).
+- **Errors are recall-bound, not classification-bound:** 74-79% of small-tercile boxes are missed versus 38-39% of large ones, and only ~5% of false positives are class confusions (44% are localization, 32% background, 19% duplicates).
+- **Both runs were compute-limited:** the best epoch was the last epoch for both primary runs, so these are budget results rather than converged ceilings.
+
+Part B embeds eight figures: model comparison (per-class AP, headline metrics, accuracy vs inference cost), learning curves for both runs, normalized confusion matrices, precision-recall curves, miss-rate slices (class / object size / sharpness), miss rate by country, false-positive taxonomy, and matched qualitative predictions on five hard test images.
+
+Selected reproducibility artifacts are tracked in `member2_runs/` and `member2_configs/`. The complete runs, including model weights, also live in Drive under `RDD2022_Project/member2_runs/`; the weights are intentionally not committed to GitHub.
 
 ## Full-data policy
 
@@ -77,6 +108,7 @@ RDD2022 is not randomly reduced:
 - The XML files contain the four project target codes plus additional codes such as D44, D50, and REPAIR. Every image is retained; non-target boxes are audited separately and are not incorrectly remapped into the four target classes.
 - The complete usable labeled pool is split into train/validation/test after corrupt/duplicate auditing.
 - Near-duplicate groups stay in one primary split.
+- Part B keeps the full validation (5,714) and test (5,783) splits, and trains on a hash-pinned, stratified **8,000-image** subset of the 26,888 training images because two GPU training runs on the full split exceed the available Colab budget. Both detectors use the identical manifest (`subset_train_8k.txt`, SHA-256 `fcfcb99b...0606e71`), and maximum domain/class composition drift versus the full training pool is 0.01 pp.
 - The United States is held out for the cross-country experiment; non-US images visually duplicated with held-out images are excluded from that experiment to prevent leakage.
 
 Pothole Mix should also use the complete 4,340 image-mask pairs and the documented 3,340/496/504 split unless Member 3's duplicate audit justifies a corrected group-aware split. Both segmentation models must use identical data.
@@ -113,9 +145,9 @@ rdd2022_yolo_coco_full_labeled/
 └── README.md
 ```
 
-YOLO class IDs are 0-3. COCO category IDs are 1-4. The images are shared; do not make a separate random RT-DETR dataset.
+YOLO class IDs are 0-3. COCO category IDs are 1-4. The images are shared; do not build a separate random dataset per model.
 
-For the cross-country experiment, YOLO uses `dataset_cross_country.yaml`; RT-DETR uses the three `instances_cross_country_*.json` files. Both point to the same held-out-US assignment.
+For the cross-country experiment, training uses `dataset_cross_country.yaml` and the three `instances_cross_country_*.json` files. Both point to the same held-out-US assignment.
 
 ## Google Drive data handoff action
 
@@ -134,7 +166,7 @@ Team action status:
 - [x] Upload the ZIP and `.sha256` file to `My Drive/RDD2022_Project/member1_outputs/`.
 - [x] Share the uploaded data with Members 2 and 3.
 - [ ] Each teammate adds `RDD2022_Project` as a shortcut under their own `My Drive`.
-- [ ] Run the Part B/B1 validator in Member 2's Colab session and confirm `Member 2 data contract validated.`
+- [x] Run the Part B/B1 validator in Member 2's Colab session and confirm `Member 2 data contract validated.`
 
 Use this shared-Drive layout:
 
@@ -162,7 +194,7 @@ Do not resize or recompress the images before handoff. Both detectors must load 
 1. Run Part A on local CPU or Colab CPU/High-RAM.
 2. Save the prepared archive and reports.
 3. Change to a fresh Colab GPU runtime for Part B; unzip the archive to `/content/rdd2022_yolo_coco_full_labeled`.
-4. Member 2 completes staged YOLO and RT-DETR runs and writes results into Part B.
+4. Member 2 runs the staged YOLO11n and YOLO11s experiments and writes results into Part B.
 5. Member 3 completes full Pothole Mix preparation and the two segmentation models in Part C.
 6. Merge all final metrics, limitations, architecture, citations, and presentation evidence in Part D.
 7. Execute the notebook from a clean runtime where practical and confirm every referenced artifact exists.
@@ -197,9 +229,7 @@ For direct viewing without unzipping, the nine PNGs are also available in [`arti
 
 - RDD2022 official dataset: <https://doi.org/10.6084/m9.figshare.21431547>
 - RDD2022 dataset paper: <https://doi.org/10.1002/gdj3.260>
-- RT-DETR official implementation: <https://github.com/lyuwenyu/RT-DETR>
 - Ultralytics YOLO11 documentation: <https://docs.ultralytics.com/models/yolo11>
-- Ultralytics RT-DETR documentation: <https://docs.ultralytics.com/models/rtdetr/>
 - Torchvision DeepLabV3 documentation: <https://docs.pytorch.org/vision/stable/models/deeplabv3.html>
 - Hugging Face SegFormer documentation: <https://huggingface.co/docs/transformers/model_doc/segformer>
 - SHREC 2022 / Pothole Mix paper: <https://iris.cnr.it/retrieve/b6db3fe0-55ff-45b1-a2fb-3ac0027ebc80/main_small.pdf>

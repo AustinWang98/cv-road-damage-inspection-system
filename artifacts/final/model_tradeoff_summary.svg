@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Champion challenger model tradeoffs</title>
+  <desc id="desc">YOLO11s slightly improves road damage detection and pothole recall at higher compute cost. SegFormer-B0 slightly improves pothole segmentation overlap and boundary quality with fewer parameters, while DeepLabV3 has higher recall.</desc>
+  <style>
+    .title{font:700 34px Arial,sans-serif;fill:#162033}.sub{font:400 17px Arial,sans-serif;fill:#526173}
+    .ph{font:700 25px Arial,sans-serif;fill:#162033}.mh{font:700 20px Arial,sans-serif;fill:#162033}
+    .metric{font:400 15px Arial,sans-serif;fill:#344256}.value{font:700 18px Arial,sans-serif;fill:#162033}
+    .note{font:400 14px Arial,sans-serif;fill:#526173}.panel{fill:#f7f9fc;stroke:#c2ccda;stroke-width:2}
+    .champ{fill:#eaf3ff;stroke:#3977d3;stroke-width:2.5}.alt{fill:#ffffff;stroke:#9aabc3;stroke-width:2}
+    .barbg{fill:#e1e7ef}.blue{fill:#3977d3}.cyan{fill:#5daed7}.gold{fill:#d99b22}
+  </style>
+  <rect width="1280" height="720" fill="#fff"/>
+  <text x="62" y="60" class="title">Both champions win narrowly; missed-damage cost still matters</text>
+  <text x="62" y="91" class="sub">Shared held-out tests, validation-selected operating points; metrics across tasks are not directly comparable</text>
+
+  <rect x="62" y="130" width="555" height="506" rx="12" class="panel"/>
+  <text x="90" y="173" class="ph">Object detection · RDD2022</text>
+  <rect x="90" y="202" width="238" height="370" rx="10" class="alt"/>
+  <text x="112" y="237" class="mh">YOLO11n</text>
+  <text x="112" y="268" class="metric">mAP@0.50</text><text x="280" y="268" text-anchor="end" class="value">0.4336</text>
+  <rect x="112" y="283" width="190" height="14" rx="7" class="barbg"/><rect x="112" y="283" width="165" height="14" rx="7" class="cyan"/>
+  <text x="112" y="329" class="metric">D40 recall</text><text x="280" y="329" text-anchor="end" class="value">0.2621</text>
+  <rect x="112" y="344" width="190" height="14" rx="7" class="barbg"/><rect x="112" y="344" width="100" height="14" rx="7" class="gold"/>
+  <text x="112" y="390" class="metric">Latency</text><text x="280" y="390" text-anchor="end" class="value">1.58 ms</text>
+  <text x="112" y="428" class="metric">Parameters</text><text x="280" y="428" text-anchor="end" class="value">2.58 M</text>
+  <text x="112" y="480" class="note">Efficient fallback for batched</text><text x="112" y="501" class="note">or edge deployment.</text>
+
+  <rect x="350" y="202" width="238" height="370" rx="10" class="champ"/>
+  <text x="372" y="237" class="mh">YOLO11s · champion</text>
+  <text x="372" y="268" class="metric">mAP@0.50</text><text x="540" y="268" text-anchor="end" class="value">0.4439</text>
+  <rect x="372" y="283" width="190" height="14" rx="7" class="barbg"/><rect x="372" y="283" width="169" height="14" rx="7" class="blue"/>
+  <text x="372" y="329" class="metric">D40 recall</text><text x="540" y="329" text-anchor="end" class="value">0.3024</text>
+  <rect x="372" y="344" width="190" height="14" rx="7" class="barbg"/><rect x="372" y="344" width="115" height="14" rx="7" class="blue"/>
+  <text x="372" y="390" class="metric">Latency</text><text x="540" y="390" text-anchor="end" class="value">3.77 ms</text>
+  <text x="372" y="428" class="metric">Parameters</text><text x="540" y="428" text-anchor="end" class="value">9.41 M</text>
+  <text x="372" y="480" class="note">Significant F1 gain; better D00</text><text x="372" y="501" class="note">and pothole detection.</text>
+
+  <rect x="663" y="130" width="555" height="506" rx="12" class="panel"/>
+  <text x="691" y="173" class="ph">Pothole segmentation · Pothole Mix</text>
+  <rect x="691" y="202" width="238" height="370" rx="10" class="alt"/>
+  <text x="713" y="237" class="mh">DeepLabV3-MNV3</text>
+  <text x="713" y="268" class="metric">Pothole IoU</text><text x="881" y="268" text-anchor="end" class="value">0.6533</text>
+  <rect x="713" y="283" width="190" height="14" rx="7" class="barbg"/><rect x="713" y="283" width="124" height="14" rx="7" class="cyan"/>
+  <text x="713" y="329" class="metric">Pothole recall</text><text x="881" y="329" text-anchor="end" class="value">0.7917</text>
+  <rect x="713" y="344" width="190" height="14" rx="7" class="barbg"/><rect x="713" y="344" width="150" height="14" rx="7" class="gold"/>
+  <text x="713" y="390" class="metric">Inference</text><text x="881" y="390" text-anchor="end" class="value">12.1 ms</text>
+  <text x="713" y="428" class="metric">Parameters</text><text x="881" y="428" text-anchor="end" class="value">11.02 M</text>
+  <text x="713" y="480" class="note">Higher recall: defensible when</text><text x="713" y="501" class="note">misses cost more than alarms.</text>
+
+  <rect x="951" y="202" width="238" height="370" rx="10" class="champ"/>
+  <text x="973" y="237" class="mh">SegFormer-B0 · champion</text>
+  <text x="973" y="268" class="metric">Pothole IoU</text><text x="1141" y="268" text-anchor="end" class="value">0.6646</text>
+  <rect x="973" y="283" width="190" height="14" rx="7" class="barbg"/><rect x="973" y="283" width="126" height="14" rx="7" class="blue"/>
+  <text x="973" y="329" class="metric">Pothole recall</text><text x="1141" y="329" text-anchor="end" class="value">0.7436</text>
+  <rect x="973" y="344" width="190" height="14" rx="7" class="barbg"/><rect x="973" y="344" width="141" height="14" rx="7" class="blue"/>
+  <text x="973" y="390" class="metric">Inference</text><text x="1141" y="390" text-anchor="end" class="value">12.5 ms</text>
+  <text x="973" y="428" class="metric">Parameters</text><text x="1141" y="428" text-anchor="end" class="value">3.71 M</text>
+  <text x="973" y="480" class="note">Best overlap and boundary F1;</text><text x="973" y="501" class="note">3× fewer parameters.</text>
+
+  <text x="90" y="608" class="note">Detection: 5,783 test images / 8,296 boxes · Segmentation: 504 test images · Latency measured on NVIDIA L4/T4 respectively.</text>
+</svg>

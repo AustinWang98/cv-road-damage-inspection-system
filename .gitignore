@@ -2,6 +2,9 @@
 .DS_Store
 .ipynb_checkpoints/
 
+# Local review/build intermediates
+work/
+
 # Python environments and caches
 .venv/
 venv/

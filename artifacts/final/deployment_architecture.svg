@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Road damage inspection deployment architecture</title>
+  <desc id="desc">A road image moves through validation and versioned preprocessing, then through YOLO11s detection and SegFormer-B0 pothole segmentation. Their outputs feed a prototype priority rule, dashboard, and mandatory human review. Model registry, observability, and rollback support the service.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#3977d3"/>
+    </marker>
+    <style>
+      .title{font:700 34px Arial,sans-serif;fill:#162033}
+      .sub{font:400 17px Arial,sans-serif;fill:#526173}
+      .h{font:700 19px Arial,sans-serif;fill:#162033}
+      .t{font:400 15px Arial,sans-serif;fill:#344256}
+      .small{font:400 13px Arial,sans-serif;fill:#526173}
+      .box{fill:#f7f9fc;stroke:#9aabc3;stroke-width:2}
+      .model{fill:#eaf3ff;stroke:#3977d3;stroke-width:2.5}
+      .safety{fill:#fff4dc;stroke:#ca8a04;stroke-width:2.5}
+      .ops{fill:#eef8f2;stroke:#2f855a;stroke-width:2}
+      .edge{fill:none;stroke:#3977d3;stroke-width:3;marker-end:url(#arrow)}
+      .support{fill:none;stroke:#2f855a;stroke-width:2;stroke-dasharray:7 6;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1280" height="720" fill="#ffffff"/>
+  <text x="62" y="60" class="title">Deployment keeps both models versioned and every decision reviewable</text>
+  <text x="62" y="91" class="sub">Current Gradio prototype mapped to a production service boundary; no autonomous repair decision</text>
+
+  <path class="edge" d="M214 206 H276"/>
+  <path class="edge" d="M476 206 H538"/>
+  <path class="edge" d="M738 206 H795 V164 H838"/>
+  <path class="edge" d="M738 206 H795 V300 H838"/>
+  <path class="edge" d="M1042 164 H1084 V232 H1114"/>
+  <path class="edge" d="M1042 300 H1084 V232 H1114"/>
+  <path class="edge" d="M1214 232 V383 H1056"/>
+  <path class="edge" d="M914 430 H848"/>
+
+  <rect x="62" y="153" width="152" height="106" rx="10" class="box"/>
+  <text x="82" y="183" class="h">Road image</text>
+  <text x="82" y="211" class="t">JPEG / PNG</text>
+  <text x="82" y="234" class="small">request ID + consent</text>
+
+  <rect x="276" y="140" width="200" height="132" rx="10" class="box"/>
+  <text x="296" y="171" class="h">Input boundary</text>
+  <text x="296" y="200" class="t">type, size, dimensions</text>
+  <text x="296" y="224" class="t">EXIF-safe RGB decode</text>
+  <text x="296" y="248" class="small">reject invalid input explicitly</text>
+
+  <rect x="538" y="140" width="200" height="132" rx="10" class="box"/>
+  <text x="558" y="171" class="h">Versioned preprocessing</text>
+  <text x="558" y="200" class="t">YOLO letterbox: 640 px</text>
+  <text x="558" y="224" class="t">Segmentation: 512 px</text>
+  <text x="558" y="248" class="small">record config + model version</text>
+
+  <rect x="838" y="112" width="204" height="104" rx="10" class="model"/>
+  <text x="858" y="144" class="h">YOLO11s detector</text>
+  <text x="858" y="173" class="t">D00 / D10 / D20 / D40</text>
+  <text x="858" y="196" class="small">boxes, confidence, latency</text>
+
+  <rect x="838" y="248" width="204" height="104" rx="10" class="model"/>
+  <text x="858" y="280" class="h">SegFormer-B0</text>
+  <text x="858" y="309" class="t">pothole pixels only</text>
+  <text x="858" y="332" class="small">mask, area %, latency</text>
+
+  <rect x="1114" y="178" width="100" height="108" rx="10" class="safety"/>
+  <text x="1131" y="210" class="h">Fusion</text>
+  <text x="1131" y="238" class="t">priority</text>
+  <text x="1131" y="261" class="small">reasons</text>
+
+  <rect x="914" y="383" width="300" height="94" rx="10" class="safety"/>
+  <text x="934" y="416" class="h">Dashboard + human review</text>
+  <text x="934" y="445" class="t">overlay, metrics, warning, approve / reject</text>
+
+  <rect x="610" y="383" width="238" height="94" rx="10" class="box"/>
+  <text x="630" y="416" class="h">Response + evidence</text>
+  <text x="630" y="445" class="t">JSON summary and visual overlay</text>
+
+  <path class="support" d="M312 591 V499 H914"/>
+  <path class="support" d="M640 591 V499 H1020"/>
+  <path class="support" d="M974 591 V499 H1110"/>
+
+  <rect x="62" y="548" width="250" height="108" rx="10" class="ops"/>
+  <text x="82" y="580" class="h">Model registry</text>
+  <text x="82" y="608" class="t">champion + previous champion</text>
+  <text x="82" y="632" class="small">hashes, config, approval record</text>
+
+  <rect x="374" y="548" width="266" height="108" rx="10" class="ops"/>
+  <text x="394" y="580" class="h">Observability</text>
+  <text x="394" y="608" class="t">latency, errors, confidence drift</text>
+  <text x="394" y="632" class="small">per-country / per-class review metrics</text>
+
+  <rect x="702" y="548" width="272" height="108" rx="10" class="ops"/>
+  <text x="722" y="580" class="h">Review data + audit log</text>
+  <text x="722" y="608" class="t">consented samples, annotations</text>
+  <text x="722" y="632" class="small">limited retention and access control</text>
+
+  <rect x="1036" y="548" width="178" height="108" rx="10" class="ops"/>
+  <text x="1056" y="580" class="h">Rollback</text>
+  <text x="1056" y="608" class="t">canary → promote</text>
+  <text x="1056" y="632" class="small">or restore prior version</text>
+</svg>

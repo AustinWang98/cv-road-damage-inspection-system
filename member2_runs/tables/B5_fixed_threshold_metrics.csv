@@ -1,3 +1,0 @@
-model,conf*,TP,FP,FN,Precision_micro,Recall_micro,F1_micro,D40_recall
-YOLO11n,0.228,3359,2835,4937,0.5423,0.4049,0.4636,0.2369
-YOLO11s,0.237,3557,2875,4739,0.553,0.4288,0.483,0.2833

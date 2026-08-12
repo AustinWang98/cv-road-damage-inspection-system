@@ -9,6 +9,8 @@ The master notebook contains the complete report and the team's live presentatio
 
 The notebook deliberately retains reproducible code while remaining presentation-ready: long runtime/training cells can be collapsed, and each important plot/table is followed by a concise interpretation. No additional model run is necessary to complete the written report.
 
+One administrative requirement is outside the notebook's content: the course handout explicitly requests a report/presentation **PDF or PPT plus full source code**. The repository supplies the full source; export/print the finalized notebook to PDF before the Canvas upload unless the instructor confirms that `.ipynb` is accepted. No slide deck or model rerun is necessary.
+
 ## Rubric coverage
 
 | Requirement | Notebook evidence | Completion |
@@ -22,7 +24,8 @@ The notebook deliberately retains reproducible code while remaining presentation
 | Algorithms and pros/cons | B3-B5 and C3-C5 state mechanisms, expected risks, measured advantages/disadvantages and deployment implications | Complete |
 | Model Operations (10) | C7 verified demo; D3 architecture/serving contract; D4 monitoring, retraining, gate, canary and rollback | Complete |
 | Conclusion (10) | D5 limitations/ethics; D6 evidence-based conclusion/next work; D7 references/resources | Complete |
-| Presentation (20) | D8 specifies speakers, timing, exact notebook evidence and takeaway for a 20-minute presentation | Complete as a notebook presentation plan |
+| Presentation (20) | D8 assigns all three named members exact evidence and speaking time across the full 20 minutes | Complete as a notebook presentation plan |
+| Submission package | Master notebook and repository provide full source; course handout also requests PDF/PPT | Export notebook to PDF before upload, unless `.ipynb` acceptance is confirmed |
 | Full source | Executable methods and all small evaluation evidence are in the repository; public multi-GB datasets are hash-referenced | Complete |
 
 ## Experimental-integrity checks

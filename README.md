@@ -13,6 +13,10 @@ Final project by **Austin Wang**, **Kevin Fan**, and **RJ Xia** for Deep Learnin
 
 The notebook embeds verified outputs and short interpretations after every presentation-critical figure or table. Long setup, training, and logging cells remain for reproducibility and should be collapsed during the presentation.
 
+### Submission packaging
+
+The course handout explicitly requests a **report/presentation PDF or PPT plus full source code**. This notebook and repository provide the full source and live presentation artifact; before the Canvas upload, export/print the finalized notebook to PDF unless the instructor confirms that `.ipynb` alone is accepted. This is a file-format step only—no model rerun is required.
+
 ## Headline results
 
 ### Object detection
@@ -107,7 +111,9 @@ Use the notebook TOC and the detailed D8 timing table:
 - 0–7 min: Austin — problem, RDD2022, data quality and EDA.
 - 7–12 min: Kevin — detector comparison, domain shift, and errors.
 - 12–17 min: RJ — segmentation comparison and application.
-- 17–20 min: shared — model trade-offs, operations, limitations, and conclusion.
+- 17–18 min: Austin — consolidated model trade-offs.
+- 18–19 min: Kevin — deployment, monitoring, and rollback.
+- 19–20 min: RJ — limitations and conclusion.
 
 Collapse long code/log cells and present only the figures/tables named in D8.
 

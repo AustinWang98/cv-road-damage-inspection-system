@@ -1,0 +1,25 @@
+{
+  "dataset": "Pothole Mix v1.0 (2022-05-26), SHREC 2022 pothole and crack segmentation benchmark",
+  "paper": "https://iris.cnr.it/retrieve/b6db3fe0-55ff-45b1-a2fb-3ac0027ebc80/main_small.pdf",
+  "download_url": "https://data.mendeley.com/datasets/kfth5g2xk3/2 (Mendeley Data, doi:10.17632/kfth5g2xk3.2)",
+  "project_page": "http://deeplearning.ge.imati.cnr.it/genova-5G/",
+  "download_date": "2026-08-10",
+  "archive": "pothole-mix-v1.0-20220526.zip (3,556,279,570 bytes)",
+  "archive_sha256": "7b95ff42fcd00db1136bb6e1f8b81a9d436e489409655cdfff698fd5b988d74e",
+  "sha256_verified_against_official_sums_file": true,
+  "license_terms": "Pothole Mix authors' own material: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0). Each of the six component datasets retains its original license; per the bundled readme.txt, GAPs384 is academic-use-only and EdmCrack600 forbids commercial use.",
+  "components": [
+    "crack500",
+    "gaps384",
+    "edmcrack600",
+    "pothole600",
+    "cnr-road-dataset",
+    "cracks-and-potholes-in-road"
+  ],
+  "component_details": "see readme.txt inside the archive for per-component repos, links, and BibTeX entries",
+  "expected_pairs": {
+    "train": 3340,
+    "val": 496,
+    "test": 504
+  }
+}

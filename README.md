@@ -9,7 +9,7 @@ Use `Road_Damage_Final_Project_Master.ipynb` as the single project notebook. It 
 - Part C - Member 3: full Pothole Mix data/EDA, DeepLabV3-MobileNetV3, SegFormer-B0, severity scoring, and application.
 - Part D - Shared: abstract, consolidated results, deployment, maintenance, limitations, conclusion, references, and presentation evidence.
 
-Parts A and B are executed and carry their verified outputs. The remaining Part C-D cells are scaffolds, not fake results; keep them while the project is in progress and replace each TODO with verified code, tables, and interpretation. After the last member finishes, perform a submission cleanup: remove resolved TODOs, placeholders, temporary status labels, handoff/run guides, and debugging-only cells, leaving only project-relevant methods, reproducible code, final outputs, key interpretations, citations, and concise runtime requirements.
+Parts A and B are executed and carry their verified outputs. Part C is implemented and fully run (full Pothole Mix audit/EDA, both segmentation models trained 40 epochs, one-shot test evaluation, severity rule with unit tests, and the Gradio app); its training/evaluation cells stay flag-gated so Run All remains safe, and its evidence lives in `artifacts/member3/`. Part D cells remain scaffolds, not fake results; replace each TODO with verified content. After the last member finishes, perform a submission cleanup: remove resolved TODOs, placeholders, temporary status labels, handoff/run guides, and debugging-only cells, leaving only project-relevant methods, reproducible code, final outputs, key interpretations, citations, and concise runtime requirements.
 
 The notebook starts with a manual table of contents, a final-project rubric matrix, and a submission gate. Part B was executed in Colab GPU sessions and its cells appear in execution order, so it is not part of a single Run All; Part C still ships a standalone runtime/data validator with training flags defaulted to `False`.
 
@@ -31,11 +31,16 @@ The complete original [project proposal](docs/Project_Proposal.docx) and the one
 │   ├── Course_Project_Requirements.pdf
 │   ├── Member1_EDA_Report.md
 │   ├── Notebook_Structure_and_Rubric_Audit.md
-│   └── Member1_Run_Guide_CN.md
+│   ├── Member1_Run_Guide_CN.md
+│   └── Member3_Run_Guide_CN.md
 └── artifacts/
-    └── member1/
-        ├── EDA_Figures/
-        └── Member1_RDD2022_Full_EDA_Results.zip
+    ├── member1/
+    │   ├── EDA_Figures/
+    │   └── Member1_RDD2022_Full_EDA_Results.zip
+    └── member3/
+        ├── eda/
+        ├── evaluation/
+        └── app/
 ```
 
 The root contains the two primary deliverables plus Member 2's tracked manifests, captured tables/plots, and small reproducibility-config archive. Human-readable documentation belongs in `docs/`; generated Member 1 evidence belongs in `artifacts/member1/`.
@@ -51,9 +56,9 @@ The root contains the two primary deliverables plus Member 2's tracked manifests
 | YOLO11n | Member 2 | Trained and evaluated (`det-yolo11n-8k-01`) | Colab GPU |
 | YOLO11s | Member 2 | Trained and evaluated (`det-yolo11s-8k-01`) | Colab GPU |
 | Detection comparison, cross-country, error analysis | Member 2 | Implemented with bootstrap CIs and error slices | Colab GPU |
-| Pothole Mix full data and segmentation EDA | Member 3 | TODO scaffold | CPU / High-RAM |
-| DeepLabV3-MobileNetV3 and SegFormer-B0 | Member 3 | TODO scaffold | Colab GPU |
-| Severity score and Gradio/Streamlit app | Member 3 | TODO scaffold | GPU training; CPU/GPU inference |
+| Pothole Mix full data and segmentation EDA | Member 3 | Completed on the full 4,340-pair dataset; audit report and figures in `artifacts/member3/eda/` | CPU / High-RAM |
+| DeepLabV3-MobileNetV3 and SegFormer-B0 | Member 3 | Both trained 40 epochs on Colab T4; single test-set evaluation done — SegFormer-B0 wins (pothole IoU 0.665 vs 0.653); see `artifacts/member3/evaluation/` | Colab GPU |
+| Severity score and Gradio/Streamlit app | Member 3 | Severity rule with passing unit tests; Gradio app smoke-tested with the YOLO11s champion detector (GPU 56 ms vs CPU 2,023 ms first-run); screenshots in `artifacts/member3/app/` | GPU training; CPU/GPU inference |
 | Abstract, operations, maintenance, conclusion, references | All members | TODO scaffold | CPU |
 
 The verified full Member 1 run produced **38,385 prepared labeled images**, **55,006 valid target boxes**, and a group-aware **26,888 / 5,714 / 5,783** train/validation/test split. It also scanned all **9,035** unlabeled official-test images at image level. See [the Member 1 EDA report](docs/Member1_EDA_Report.md) for the readable summary and [the results archive](artifacts/member1/Member1_RDD2022_Full_EDA_Results.zip) for the CSV audit tables and nine figures.
@@ -218,6 +223,8 @@ Do not use one uninterrupted Run All for the entire finished project: Part A is 
 ## Other documentation
 
 [Member1_Run_Guide_CN.md](docs/Member1_Run_Guide_CN.md) contains the detailed Chinese proposal review, disk/runtime guidance, Colab steps, and handoff paths.
+
+[Member3_Run_Guide_CN.md](docs/Member3_Run_Guide_CN.md) contains the Chinese guide for executing Part C: Pothole Mix acquisition, Colab data flow (Drive ZIP unzipped to the runtime's local disk), staged training flags, evaluation, and the app demo.
 
 [Notebook_Structure_and_Rubric_Audit.md](docs/Notebook_Structure_and_Rubric_Audit.md) records the whole-notebook requirement mapping, design checks, execution checks, verification performed, and remaining completion work.
 

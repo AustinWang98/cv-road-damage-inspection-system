@@ -1,0 +1,14 @@
+{
+  "manifest_hash": "fcfcb99b570cf41f1edb75488be9f52a803977dfe86b4c4975179e2110606e71",
+  "imgsz": 640,
+  "batch": 16,
+  "epochs": 30,
+  "patience": 5,
+  "seed": 42,
+  "conf_star": {
+    "YOLO11n": 0.228,
+    "YOLO11s": 0.237
+  },
+  "gpu": "NVIDIA L4",
+  "ultralytics": "8.4.117"
+}

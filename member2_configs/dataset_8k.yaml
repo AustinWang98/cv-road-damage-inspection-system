@@ -1,9 +1,0 @@
-path: /content/rdd2022_yolo_coco_full_labeled
-train: /content/rdd2022_yolo_coco_full_labeled/subset_train_8k.txt
-val: images/val
-test: images/test
-names:
-  0: D00
-  1: D10
-  2: D20
-  3: D40

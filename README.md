@@ -83,9 +83,10 @@ The verified Gradio prototype loads **YOLO11s + SegFormer-B0** and displays boxe
 ├── artifacts/
 │   ├── final/                 # final trade-off and deployment visuals
 │   ├── member1/               # verified RDD2022 EDA evidence
+│   ├── member2/
+│   │   ├── configs/           # hash-pinned training manifests
+│   │   └── runs/              # checkpoints, metrics, curves, confusion matrices
 │   └── member3/               # EDA, model histories, evaluation, app screenshots
-├── member2_configs/           # hash-pinned training manifests
-├── member2_runs/              # checkpoints, metrics, curves, confusion matrices
 └── docs/
     ├── Course_Project_Requirements.pdf
     ├── Notebook_Structure_and_Rubric_Audit.md
@@ -102,7 +103,7 @@ The final notebook is not intended as one uninterrupted **Run All**:
 3. Part C uses independent CPU/GPU sessions and the official Pothole Mix archive.
 4. Part D is a synthesis of tracked evidence and does not require another model run.
 
-The public multi-gigabyte datasets are intentionally excluded from GitHub. Reproducibility is supported by archive hashes, manifests and hashes, seeds, package/GPU records, checkpoint paths, saved histories, test tables, figures, and the executable notebook code. The three final detection checkpoints are tracked in `member2_runs/`; complete original run directories also remain in the shared Drive workspace.
+The public multi-gigabyte datasets are intentionally excluded from GitHub. Reproducibility is supported by archive hashes, manifests and hashes, seeds, package/GPU records, checkpoint paths, saved histories, test tables, figures, and the executable notebook code. The three final detection checkpoints are tracked in `artifacts/member2/runs/`; complete original run directories also remain in the shared Drive workspace.
 
 ## Presentation route
 

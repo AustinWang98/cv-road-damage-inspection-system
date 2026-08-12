@@ -1,0 +1,5 @@
+kind,YOLO11n,YOLO11s
+FP_background,31.8,33.1
+FP_classification,5.0,4.7
+FP_duplicate,19.0,18.4
+FP_localization,44.3,43.8

@@ -44,10 +44,11 @@
   <text x="296" y="248" class="small">reject invalid input explicitly</text>
 
   <rect x="538" y="140" width="200" height="132" rx="10" class="box"/>
-  <text x="558" y="171" class="h">Versioned preprocessing</text>
-  <text x="558" y="200" class="t">YOLO letterbox: 640 px</text>
-  <text x="558" y="224" class="t">Segmentation: 512 px</text>
-  <text x="558" y="248" class="small">record config + model version</text>
+  <text x="558" y="166" class="h">Versioned</text>
+  <text x="558" y="188" class="h">preprocessing</text>
+  <text x="558" y="215" class="t">YOLO letterbox: 640 px</text>
+  <text x="558" y="238" class="t">Segmentation: 512 px</text>
+  <text x="558" y="259" class="small">record config + model version</text>
 
   <rect x="838" y="112" width="204" height="104" rx="10" class="model"/>
   <text x="858" y="144" class="h">YOLO11s detector</text>
@@ -66,11 +67,13 @@
 
   <rect x="914" y="383" width="300" height="94" rx="10" class="safety"/>
   <text x="934" y="416" class="h">Dashboard + human review</text>
-  <text x="934" y="445" class="t">overlay, metrics, warning, approve / reject</text>
+  <text x="934" y="443" class="t">overlay, metrics, warnings</text>
+  <text x="934" y="464" class="small">reviewer approval / rejection</text>
 
   <rect x="610" y="383" width="238" height="94" rx="10" class="box"/>
   <text x="630" y="416" class="h">Response + evidence</text>
-  <text x="630" y="445" class="t">JSON summary and visual overlay</text>
+  <text x="630" y="443" class="t">JSON summary</text>
+  <text x="630" y="464" class="small">visual overlay + model evidence</text>
 
   <path class="support" d="M312 591 V499 H914"/>
   <path class="support" d="M640 591 V499 H1020"/>

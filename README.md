@@ -13,7 +13,7 @@ Final project by **Austin Wang**, **Kevin Fan**, and **RJ Xia** for Deep Learnin
 
 The master notebook embeds verified outputs and short interpretations after every important figure or table. Completed-project runtime guidance and presentation-only material have been removed without deleting code or saved output.
 
-[`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb) is the separate 20-minute, three-speaker presentation notebook. It contains no code: the storyline uses verified tables, plots, labeled examples, qualitative failures, application screenshots, workflow diagrams, short metric explanations, and a one-sentence takeaway after every important visual. Each main slide is followed by a concise read-aloud speaker note labeled **Member 1 — Austin Wang**, **Member 2 — Kevin Fan**, or **Member 3 — RJ Xia**.
+[`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb) is the separate 20-minute, three-speaker presentation notebook. It contains no code: the audience-facing storyline uses verified tables, plots, labeled examples, qualitative failures, application screenshots, workflow diagrams, short metric explanations, and concise explanatory paragraphs after the main visuals.
 
 ### Submission packaging
 

@@ -5,9 +5,11 @@ Final owners: Austin Wang, Kevin Fan, RJ Xia
 
 ## Audit conclusion
 
-The master notebook contains the complete report and a timed presentation outline. It satisfies the report-content requirements for authors/TOC, abstract, EDA, two cognitive problems, two competing models per problem, detailed evaluation, algorithm trade-offs, model operations, conclusion, references, and resources. D8 maps the same verified evidence to a 20-minute three-person presentation.
+The master notebook contains the complete report and the team's live presentation route. It satisfies the report-content requirements for authors/TOC, abstract, EDA, two cognitive problems, two competing models per problem, detailed evaluation, algorithm trade-offs, model operations, conclusion, references, and resources. D8 maps the same verified evidence to a 20-minute three-person presentation.
 
-The notebook retains reproducible code, verified outputs, and a concise interpretation after each important plot or table.
+The notebook deliberately retains reproducible code while remaining presentation-ready: long runtime/training cells can be collapsed, and each important plot/table is followed by a concise interpretation. No additional model run is necessary to complete the written report.
+
+One administrative requirement is outside the notebook's content: the course handout explicitly requests a report/presentation **PDF or PPT plus full source code**. The repository supplies the full source; export/print the finalized notebook to PDF before the Canvas upload unless the instructor confirms that `.ipynb` is accepted. No slide deck or model rerun is necessary.
 
 ## Rubric coverage
 
@@ -23,7 +25,7 @@ The notebook retains reproducible code, verified outputs, and a concise interpre
 | Model Operations (10) | C7 verified demo; D3 architecture/serving contract; D4 monitoring, retraining, gate, canary and rollback | Complete |
 | Conclusion (10) | D5 limitations/ethics; D6 evidence-based conclusion/next work; D7 references/resources | Complete |
 | Presentation (20) | D8 assigns all three named members exact evidence and speaking time across the full 20 minutes | Complete as a notebook presentation plan |
-| Submission package | Master notebook and repository provide the report, source, and verified evidence | Complete |
+| Submission package | Master notebook and repository provide full source; course handout also requests PDF/PPT | Export notebook to PDF before upload, unless `.ipynb` acceptance is confirmed |
 | Full source | Executable methods and all small evaluation evidence are in the repository; public multi-GB datasets are hash-referenced | Complete |
 
 ## Experimental-integrity checks
@@ -46,3 +48,9 @@ The notebook retains reproducible code, verified outputs, and a concise interpre
 - Part C: 4,340-row manifest; 0 corrupt and 0 dimension mismatches; two 40-epoch histories; champion table, five evaluation figures, severity tests and CPU/GPU application screenshots.
 - Part D: all numeric claims come from the tracked Part B/C tables and histories; deployment and trade-off visuals contain only those verified values.
 - Notebook JSON and all code-cell Python syntax are checked during final validation; no saved error output is accepted.
+
+## Runtime and presentation policy
+
+The notebook is not one monolithic Run All because each section has a different resource contract. Part A is CPU/high-storage; Parts B and C use separate GPU sessions and persisted artifacts. This execution boundary is stated in the notebook and README.
+
+For presentation, collapse code/setup logs and follow D8. The notebook is the presentation artifact requested by the team; no separate slide deck is maintained in this repository.

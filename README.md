@@ -4,14 +4,18 @@ Final project by **Austin Wang**, **Kevin Fan**, and **RJ Xia** for Deep Learnin
 
 ## Final deliverable
 
-[`Road_Damage_Final_Project_Master_New.ipynb`](Road_Damage_Final_Project_Master_New.ipynb) is the complete report and source-code record. It contains:
+[`Road_Damage_Final_Project_Master_New.ipynb`](Road_Damage_Final_Project_Master_New.ipynb) is the complete report, source-code record, and live presentation guide. It contains:
 
 - **Part A — Austin Wang:** full RDD2022 acquisition, data quality, EDA, duplicate-safe splitting, and YOLO/COCO export.
 - **Part B — Kevin Fan:** YOLO11n vs YOLO11s, controlled shared-test comparison, bootstrap uncertainty, cross-country generalization, and error analysis.
 - **Part C — RJ Xia:** full Pothole Mix audit, DeepLabV3-MobileNetV3 vs SegFormer-B0, severity-rule tests, and an integrated Gradio application.
 - **Part D — Shared:** abstract, consolidated scorecard, deployment and maintenance plans, limitations, conclusion, references, and a timed 20-minute notebook presentation route.
 
-The notebook embeds verified outputs and concise interpretations after every important figure or table. Complete acquisition, preprocessing, training, evaluation, and application source code is retained for reproducibility.
+The notebook embeds verified outputs and short interpretations after every presentation-critical figure or table. Long setup, training, and logging cells remain for reproducibility and should be collapsed during the presentation.
+
+### Submission packaging
+
+The course handout explicitly requests a **report/presentation PDF or PPT plus full source code**. This notebook and repository provide the full source and live presentation artifact; before the Canvas upload, export/print the finalized notebook to PDF unless the instructor confirms that `.ipynb` alone is accepted. This is a file-format step only—no model rerun is required.
 
 ## Headline results
 
@@ -90,11 +94,20 @@ The verified Gradio prototype loads **YOLO11s + SegFormer-B0** and displays boxe
     └── Project_Proposal.docx
 ```
 
-## Reproducibility record
+## Reproduction policy
 
-The public multi-gigabyte datasets are excluded from GitHub. Archive hashes, fixed manifests, seeds, package/GPU records, checkpoint paths, saved histories, test tables, figures, and executable notebook code preserve the experiment record. The three final detection checkpoints are tracked in `artifacts/member2/runs/`; complete original run directories are retained in the shared Drive workspace.
+The final notebook is not intended as one uninterrupted **Run All**:
 
-## Presentation outline
+1. Part A is a multi-hour CPU/high-storage data job.
+2. Part B uses a fresh NVIDIA L4 Colab session and the persisted Part A archive.
+3. Part C uses independent CPU/GPU sessions and the official Pothole Mix archive.
+4. Part D is a synthesis of tracked evidence and does not require another model run.
+
+The public multi-gigabyte datasets are intentionally excluded from GitHub. Reproducibility is supported by archive hashes, manifests and hashes, seeds, package/GPU records, checkpoint paths, saved histories, test tables, figures, and the executable notebook code. The three final detection checkpoints are tracked in `artifacts/member2/runs/`; complete original run directories also remain in the shared Drive workspace.
+
+## Presentation route
+
+Use the notebook TOC and the detailed D8 timing table:
 
 - 0–7 min: Austin — problem, RDD2022, data quality and EDA.
 - 7–12 min: Kevin — detector comparison, domain shift, and errors.
@@ -102,6 +115,8 @@ The public multi-gigabyte datasets are excluded from GitHub. Archive hashes, fix
 - 17–18 min: Austin — consolidated model trade-offs.
 - 18–19 min: Kevin — deployment, monitoring, and rollback.
 - 19–20 min: RJ — limitations and conclusion.
+
+Collapse long code/log cells and present only the figures/tables named in D8.
 
 ## Primary sources
 

@@ -2,20 +2,22 @@
 
 Final project by **Austin Wang**, **Kevin Fan**, and **RJ Xia** for Deep Learning and Computer Vision.
 
-## Final deliverable
+## Final deliverables
 
-[`Road_Damage_Final_Project_Master_New.ipynb`](Road_Damage_Final_Project_Master_New.ipynb) is the complete report, source-code record, and live presentation guide. It contains:
+[`Road_Damage_Final_Project_Master_New.ipynb`](Road_Damage_Final_Project_Master_New.ipynb) is the complete report and source-code record. It contains:
 
 - **Part A — Austin Wang:** full RDD2022 acquisition, data quality, EDA, duplicate-safe splitting, and YOLO/COCO export.
 - **Part B — Kevin Fan:** YOLO11n vs YOLO11s, controlled shared-test comparison, bootstrap uncertainty, cross-country generalization, and error analysis.
 - **Part C — RJ Xia:** full Pothole Mix audit, DeepLabV3-MobileNetV3 vs SegFormer-B0, severity-rule tests, and an integrated Gradio application.
-- **Part D — Shared:** abstract, consolidated scorecard, deployment and maintenance plans, limitations, conclusion, references, and a timed 20-minute notebook presentation route.
+- **Part D — Shared:** abstract, consolidated scorecard, deployment and maintenance plans, limitations, conclusion, and references.
 
-The notebook embeds verified outputs and short interpretations after every presentation-critical figure or table. Long setup, training, and logging cells remain for reproducibility and should be collapsed during the presentation.
+The master notebook embeds verified outputs and short interpretations after every important figure or table. Completed-project runtime guidance and presentation-only material have been removed without deleting code or saved output.
+
+[`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb) is the separate 20-minute, three-speaker presentation notebook. It contains no code: the storyline uses verified tables, plots, labeled examples, qualitative failures, application screenshots, workflow diagrams, short metric explanations, and a one-sentence takeaway after every important visual.
 
 ### Submission packaging
 
-The course handout explicitly requests a **report/presentation PDF or PPT plus full source code**. This notebook and repository provide the full source and live presentation artifact; before the Canvas upload, export/print the finalized notebook to PDF unless the instructor confirms that `.ipynb` alone is accepted. This is a file-format step only—no model rerun is required.
+The course handout explicitly requests a **report/presentation PDF or PPT plus full source code**. The two notebooks provide the full source/report and presentation narrative; export the required submission copy to PDF/PPT format before the Canvas upload unless the instructor confirms that `.ipynb` is accepted.
 
 ## Headline results
 
@@ -80,13 +82,15 @@ The verified Gradio prototype loads **YOLO11s + SegFormer-B0** and displays boxe
 .
 ├── README.md
 ├── Road_Damage_Final_Project_Master_New.ipynb
+├── Road_Damage_Final_Project_Presentation.ipynb
 ├── artifacts/
 │   ├── final/                 # final trade-off and deployment visuals
 │   ├── member1/               # verified RDD2022 EDA evidence
 │   ├── member2/
 │   │   ├── configs/           # hash-pinned training manifests
 │   │   └── runs/              # checkpoints, metrics, curves, confusion matrices
-│   └── member3/               # EDA, model histories, evaluation, app screenshots
+│   ├── member3/               # EDA, model histories, evaluation, app screenshots
+│   └── presentation/          # presentation workflow and extracted result visuals
 └── docs/
     ├── Course_Project_Requirements.pdf
     ├── Notebook_Structure_and_Rubric_Audit.md
@@ -94,29 +98,22 @@ The verified Gradio prototype loads **YOLO11s + SegFormer-B0** and displays boxe
     └── Project_Proposal.docx
 ```
 
-## Reproduction policy
+## Reproducibility record
 
-The final notebook is not intended as one uninterrupted **Run All**:
-
-1. Part A is a multi-hour CPU/high-storage data job.
-2. Part B uses a fresh NVIDIA L4 Colab session and the persisted Part A archive.
-3. Part C uses independent CPU/GPU sessions and the official Pothole Mix archive.
-4. Part D is a synthesis of tracked evidence and does not require another model run.
-
-The public multi-gigabyte datasets are intentionally excluded from GitHub. Reproducibility is supported by archive hashes, manifests and hashes, seeds, package/GPU records, checkpoint paths, saved histories, test tables, figures, and the executable notebook code. The three final detection checkpoints are tracked in `artifacts/member2/runs/`; complete original run directories also remain in the shared Drive workspace.
+The public multi-gigabyte datasets are intentionally excluded from GitHub. Exact archive identifiers and hashes, split/training manifests and hashes, random seeds, package/GPU records, checkpoint provenance, saved histories, test tables, figures, and executable source are retained. The three final detection checkpoints are tracked in `artifacts/member2/runs/`; complete original run directories remain in the shared Drive workspace.
 
 ## Presentation route
 
-Use the notebook TOC and the detailed D8 timing table:
+Use [`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb). Its 20 timed slides and untimed appendix use this handoff:
 
-- 0–7 min: Austin — problem, RDD2022, data quality and EDA.
-- 7–12 min: Kevin — detector comparison, domain shift, and errors.
-- 12–17 min: RJ — segmentation comparison and application.
-- 17–18 min: Austin — consolidated model trade-offs.
-- 18–19 min: Kevin — deployment, monitoring, and rollback.
-- 19–20 min: RJ — limitations and conclusion.
+- 0:00–6:30: Austin — problem, RDD2022, data quality and EDA.
+- 6:30–12:30: Kevin — detector comparison, domain shift, and errors.
+- 12:30–18:00: RJ — segmentation comparison and application.
+- 18:00–18:45: Austin — consolidated model trade-offs.
+- 18:45–19:20: Kevin — deployment, monitoring, and rollback.
+- 19:20–20:00: RJ — limitations and conclusion.
 
-Collapse long code/log cells and present only the figures/tables named in D8.
+Every timed slide identifies the speaker and target time; the master notebook remains available for detailed methods, code, complete tables, and questions.
 
 ## Primary sources
 
@@ -128,4 +125,4 @@ Collapse long code/log cells and present only the figures/tables named in D8.
 - Torchvision DeepLabV3: <https://docs.pytorch.org/vision/stable/models/deeplabv3.html>
 - Hugging Face SegFormer: <https://huggingface.co/docs/transformers/model_doc/segformer>
 
-The notebook D7 section contains the full dataset, model, implementation, and reused-code reference list.
+The master notebook D7 section contains the full dataset, model, implementation, and reused-code reference list.

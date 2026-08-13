@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="600" viewBox="0 0 1280 600" role="img" aria-labelledby="title desc">
+  <title id="title">End-to-end road damage inspection workflow</title>
+  <desc id="desc">RDD2022 supports four-class object detection and Pothole Mix supports binary pothole segmentation. YOLO11s and SegFormer-B0 process a road image in parallel, then a transparent fusion rule presents visual evidence and a priority suggestion for human review.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#3977d3"/>
+    </marker>
+    <style>
+      .title{font:700 34px Arial,sans-serif;fill:#162033}.sub{font:400 17px Arial,sans-serif;fill:#526173}
+      .h{font:700 19px Arial,sans-serif;fill:#162033}.t{font:400 15px Arial,sans-serif;fill:#344256}
+      .small{font:400 13px Arial,sans-serif;fill:#526173}.box{fill:#f7f9fc;stroke:#9aabc3;stroke-width:2}
+      .data{fill:#eef8f2;stroke:#2f855a;stroke-width:2.5}.model{fill:#eaf3ff;stroke:#3977d3;stroke-width:2.5}
+      .decision{fill:#fff4dc;stroke:#ca8a04;stroke-width:2.5}.edge{fill:none;stroke:#3977d3;stroke-width:3;marker-end:url(#arrow)}
+      .dash{fill:none;stroke:#2f855a;stroke-width:2;stroke-dasharray:7 6;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1280" height="600" fill="#ffffff"/>
+  <text x="62" y="58" class="title">One road image, two specialists, one reviewable decision</text>
+  <text x="62" y="88" class="sub">Training evidence stays task-specific; deployment combines boxes, masks, reasons, and a mandatory human checkpoint</text>
+
+  <rect x="62" y="226" width="162" height="112" rx="12" class="box"/>
+  <text x="85" y="262" class="h">Road image</text>
+  <text x="85" y="291" class="t">one camera frame</text>
+  <text x="85" y="316" class="small">shared deployment input</text>
+
+  <rect x="304" y="127" width="242" height="122" rx="12" class="data"/>
+  <text x="329" y="163" class="h">RDD2022</text>
+  <text x="329" y="191" class="t">38,385 labeled images</text>
+  <text x="329" y="216" class="small">D00 / D10 / D20 / D40 boxes</text>
+
+  <rect x="304" y="351" width="242" height="122" rx="12" class="data"/>
+  <text x="329" y="387" class="h">Pothole Mix</text>
+  <text x="329" y="415" class="t">4,340 image-mask pairs</text>
+  <text x="329" y="440" class="small">binary pothole masks</text>
+
+  <rect x="646" y="127" width="242" height="122" rx="12" class="model"/>
+  <text x="671" y="163" class="h">YOLO11s · spotter</text>
+  <text x="671" y="191" class="t">what type, and where?</text>
+  <text x="671" y="216" class="small">class + box + confidence</text>
+
+  <rect x="646" y="351" width="242" height="122" rx="12" class="model"/>
+  <text x="671" y="387" class="h">SegFormer-B0 · measurer</text>
+  <text x="671" y="415" class="t">how much area?</text>
+  <text x="671" y="440" class="small">pothole mask + footprint</text>
+
+  <rect x="988" y="183" width="230" height="198" rx="12" class="decision"/>
+  <text x="1013" y="221" class="h">Evidence fusion</text>
+  <text x="1013" y="250" class="t">overlay + confidences</text>
+  <text x="1013" y="275" class="t">damaged-area estimate</text>
+  <text x="1013" y="300" class="t">priority + reasons</text>
+  <text x="1013" y="335" class="h">Human review</text>
+  <text x="1013" y="359" class="small">inspector makes the final call</text>
+
+  <path class="edge" d="M224 282 H596 V188 H646"/>
+  <path class="edge" d="M224 282 H596 V412 H646"/>
+  <path class="dash" d="M546 188 H646"/>
+  <path class="dash" d="M546 412 H646"/>
+  <path class="edge" d="M888 188 H938 V244 H988"/>
+  <path class="edge" d="M888 412 H938 V320 H988"/>
+
+  <text x="62" y="552" class="small">Green arrows: task-specific training data · Blue arrows: one-image inference path · The priority rule is a prototype, not an engineering-certified rating.</text>
+</svg>

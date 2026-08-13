@@ -4,7 +4,7 @@ Final project by **Austin Wang**, **Kevin Fan**, and **RJ Xia** for Deep Learnin
 
 ## Final deliverable
 
-[`Road_Damage_Final_Project_Master.ipynb`](Road_Damage_Final_Project_Master.ipynb) is the complete report, source-code record, and live presentation guide. It contains:
+[`Road_Damage_Final_Project_Master_New.ipynb`](Road_Damage_Final_Project_Master_New.ipynb) is the complete report, source-code record, and live presentation guide. It contains:
 
 - **Part A — Austin Wang:** full RDD2022 acquisition, data quality, EDA, duplicate-safe splitting, and YOLO/COCO export.
 - **Part B — Kevin Fan:** YOLO11n vs YOLO11s, controlled shared-test comparison, bootstrap uncertainty, cross-country generalization, and error analysis.
@@ -79,7 +79,7 @@ The verified Gradio prototype loads **YOLO11s + SegFormer-B0** and displays boxe
 ```text
 .
 ├── README.md
-├── Road_Damage_Final_Project_Master.ipynb
+├── Road_Damage_Final_Project_Master_New.ipynb
 ├── artifacts/
 │   ├── final/                 # final trade-off and deployment visuals
 │   ├── member1/               # verified RDD2022 EDA evidence

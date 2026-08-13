@@ -1,6 +1,6 @@
 # Master Notebook Final-Project Rubric Audit
 
-Audited artifact: `Road_Damage_Final_Project_Master.ipynb`
+Audited artifact: `Road_Damage_Final_Project_Master_New.ipynb`
 Final owners: Austin Wang, Kevin Fan, RJ Xia
 
 ## Audit conclusion

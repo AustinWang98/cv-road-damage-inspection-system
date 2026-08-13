@@ -13,7 +13,7 @@ Final project by **Austin Wang**, **Kevin Fan**, and **RJ Xia** for Deep Learnin
 
 The master notebook embeds verified outputs and short interpretations after every important figure or table. Completed-project runtime guidance and presentation-only material have been removed without deleting code or saved output.
 
-[`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb) is the separate 20-minute, three-speaker presentation notebook. It contains no code: the storyline uses verified tables, plots, labeled examples, qualitative failures, application screenshots, workflow diagrams, short metric explanations, and a one-sentence takeaway after every important visual.
+[`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb) is the separate 20-minute, three-speaker presentation notebook. It contains no code: the storyline uses verified tables, plots, labeled examples, qualitative failures, application screenshots, workflow diagrams, short metric explanations, and a one-sentence takeaway after every important visual. Each main slide is followed by a concise read-aloud speaker note labeled **Member 1 — Austin Wang**, **Member 2 — Kevin Fan**, or **Member 3 — RJ Xia**.
 
 ### Submission packaging
 
@@ -102,18 +102,15 @@ The verified Gradio prototype loads **YOLO11s + SegFormer-B0** and displays boxe
 
 The public multi-gigabyte datasets are intentionally excluded from GitHub. Exact archive identifiers and hashes, split/training manifests and hashes, random seeds, package/GPU records, checkpoint provenance, saved histories, test tables, figures, and executable source are retained. The three final detection checkpoints are tracked in `artifacts/member2/runs/`; complete original run directories remain in the shared Drive workspace.
 
-## Presentation route
+## Presentation ownership
 
-Use [`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb). Its 20 timed slides and untimed appendix use this handoff:
+Use [`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb) for the final talk:
 
-- 0:00–6:30: Austin — problem, RDD2022, data quality and EDA.
-- 6:30–12:30: Kevin — detector comparison, domain shift, and errors.
-- 12:30–18:00: RJ — segmentation comparison and application.
-- 18:00–18:45: Austin — consolidated model trade-offs.
-- 18:45–19:20: Kevin — deployment, monitoring, and rollback.
-- 19:20–20:00: RJ — limitations and conclusion.
+- **Member 1 — Austin Wang:** problem framing, RDD2022 data quality and EDA, split design, and combined scorecard.
+- **Member 2 — Kevin Fan:** detector comparison, domain shift, error analysis, and deployment operations.
+- **Member 3 — RJ Xia:** segmentation comparison, qualitative failures, application, and conclusion.
 
-Every timed slide identifies the speaker and target time; the master notebook remains available for detailed methods, code, complete tables, and questions.
+The master notebook remains available for detailed methods, code, complete tables, and questions.
 
 ## Primary sources
 

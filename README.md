@@ -15,9 +15,11 @@ The master notebook embeds verified outputs and short interpretations after ever
 
 [`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb) is the separate 20-minute, three-speaker presentation notebook. It contains no code: the audience-facing storyline uses verified tables, plots, labeled examples, qualitative failures, application screenshots, workflow diagrams, short metric explanations, and concise explanatory paragraphs after the main visuals.
 
+[`Road_Damage_Final_Project_Presentation.pdf`](output/pdf/Road_Damage_Final_Project_Presentation.pdf) is the submission-ready, 32-page Letter-size PDF export with all presentation visuals, interpretations, document metadata, and page numbers preserved.
+
 ### Submission packaging
 
-The course handout explicitly requests a **report/presentation PDF or PPT plus full source code**. The two notebooks provide the full source/report and presentation narrative; export the required submission copy to PDF/PPT format before the Canvas upload unless the instructor confirms that `.ipynb` is accepted.
+The course handout explicitly requests a **report/presentation PDF or PPT plus full source code**. Submit the PDF above as the presentation artifact and this GitHub repository as the complete source-code and evidence record.
 
 ## Headline results
 
@@ -83,6 +85,9 @@ The verified Gradio prototype loads **YOLO11s + SegFormer-B0** and displays boxe
 ├── README.md
 ├── Road_Damage_Final_Project_Master_New.ipynb
 ├── Road_Damage_Final_Project_Presentation.ipynb
+├── output/
+│   └── pdf/
+│       └── Road_Damage_Final_Project_Presentation.pdf
 ├── artifacts/
 │   ├── final/                 # final trade-off and deployment visuals
 │   ├── member1/               # verified RDD2022 EDA evidence

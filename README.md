@@ -15,7 +15,7 @@ The master notebook embeds verified outputs and short interpretations after ever
 
 [`Road_Damage_Final_Project_Presentation.ipynb`](Road_Damage_Final_Project_Presentation.ipynb) is the separate 20-minute, three-speaker presentation notebook. It contains no code: the audience-facing storyline uses verified tables, plots, labeled examples, qualitative failures, application screenshots, workflow diagrams, short metric explanations, and concise explanatory paragraphs after the main visuals.
 
-[`Road_Damage_Final_Project_Presentation.pdf`](output/pdf/Road_Damage_Final_Project_Presentation.pdf) is the submission-ready, 32-page Letter-size PDF export with all presentation visuals, interpretations, document metadata, and page numbers preserved.
+[`Road_Damage_Final_Project_Presentation.pdf`](output/pdf/Road_Damage_Final_Project_Presentation.pdf) is the submission-ready, compact 23-page Letter-size PDF export with all presentation visuals, interpretations, document metadata, and page numbers preserved.
 
 ### Submission packaging
 
